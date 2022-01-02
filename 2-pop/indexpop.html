@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoP</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="stylepop.css">
+    
+</head>
+
+
+<body>
+    <img class="bg" src="img/bg.png" alt="">
+
+    <div class="container" id="popelf">
+        <h1 class="text">Elf pop</h1>
+        <img id="elf" src="img/elfpop.jpg" alt="">
+        <h1 class="score">{{score}}</h1>
+        <button v-if="button==0" @click="elf1()" >POP</button>
+        <button v-if="button==1" @click="elf2()" >POP</button>
+    </div>
+
+    <audio id="sound" src="Pop 1.mp3"></audio>
+
+
+</body>
+
+</html>
+
+<script>
+    const elf1 ="img/elfpop.jpg";
+    const elf2 ="img/elfpop2.jpg";
+
+    var app = new Vue({
+        el : '#popelf',
+        data : {
+            button : 0,
+            score : 0
+        },
+        methods : {
+            elf1 : function () {
+                elf.src=elf2
+                this.button++
+                this.score++
+                var audio = document.getElementById("sound")
+                audio.play()
+            },
+            elf2 : function () {
+                elf.src=elf1
+                this.button=0
+                this.score++
+                var audio = document.getElementById("sound")
+                audio.play()   
+            }
+        }
+    })
+</script>
